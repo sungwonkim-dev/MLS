@@ -93,4 +93,3 @@ for step in range(1001):
 
 print(session.run(hypothesis, feed_dict={x: [1, 4, 9]}))
 </code></pre>
-* shape : [" LearningRecord 2.4 Tensor란 "](https://github.com/sungwonkim-dev/MLS/blob/master/LearningRecord.md, "https://github.com/sungwonkim-dev/MLS/blob/master/LearningRecord.md")

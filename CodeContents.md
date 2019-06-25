@@ -94,7 +94,7 @@ print(session.run(hypothesis, feed_dict={x: [1, 4, 9]}))
 </code></pre>
 
 ### 5. Minimizing Cost Gradient
-![Minimizing Cost Gradient](./res/image/exam/Minimizing Cost Gradient.PNG)
+![Minimizing%20Cost%20Gradient](./res/image/exam/Minimizing%20Cost%20Gradient.PNG)
 <pre><code>import tensorflow as tf
 
 x = [1, 2, 3]

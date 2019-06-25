@@ -46,3 +46,15 @@
         * EX) t = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]]
     * n-Tensor 
         * EX) Your imagination will help you..
+        
+# 3. Linear Regression
+## 3.1 Linear Regression이란?
+    * 선형 회귀
+    * 1개 이상의 독립 변수와 종속 변수와의 선형 상관 관계를 모델링
+        * EX) 공부 시간이 늘어날 수록 점수도 늘어난다.
+        * EX) H(x) = Wx + b
+    * Cost의 최소화가 학습 목표 
+
+## 3.2 Cost Funtion
+    * 가설과 결과의 일치 여부, 또는 차이를 계산
+![CostFuntion](./res/image/exam/CostFuntion.PNG)

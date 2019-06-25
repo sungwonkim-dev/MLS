@@ -18,3 +18,31 @@
     * 레이블화 되지 않는 데이터를 가지고 학습하는 것
         * grouping
         * clustering
+
+# TensorFlow
+## 2.1 TensorFlow란?
+    * 오픈 소스 소프트웨어 라이브러리
+    * Data Flow Graph를 이용한 Numerical computation
+    * 파이썬에 최적화
+    
+## 2.2 Data Flow Graph란?
+    * 흔히 생각하는 Graph와 생김새는 유사
+    * Nodes (Operations), Edges (Data arrays, tensors)로 구성
+    * Input과 Output이 있음
+
+## 2.3 TensorFlow 내부 수행 순서
+    1. TensorFlow opertaions을 사용한 Graph 생성
+    2. Session 실행
+    3. Graph 안에 존재하는 여러 값이 update되거나 return
+
+## 2.4 Tensor란?
+    * Scalar (magnitude only)
+        * EX) s = 777
+    * Vector (magnitude and direction)
+        * EX) v = [1.2, 3.7, 9.3]
+    * Matrix (table of numbers)
+        * EX) m = [[1, 2, 3],[4, 5, 6]]
+    * 3-Tensor (Cube of numbers)
+        * EX) t = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]]
+    * n-Tensor 
+        * EX) Your imagination will help you..

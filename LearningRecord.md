@@ -50,7 +50,7 @@
 # 3. Linear Regression
 ## 3.1 Linear Regression이란?
     * 선형 회귀
-    * 1개 이상의 독립 변수와 종속 변수와의 선형 상관 관계를 모델링
+    * 1개의 독립 변수와 종속 변수와의 선형 상관 관계를 모델링
         * EX) 공부 시간이 늘어날 수록 점수도 늘어난다.
         * EX) H(x) = Wx + b
     * Cost의 최소화가 학습 목표 
@@ -58,3 +58,23 @@
 ## 3.2 Cost Funtion
     * 가설과 결과의 일치 여부, 또는 차이를 계산
 ![CostFuntion](./res/image/exam/CostFuntion.PNG)
+
+## 3.3 Gradient descent algorithm이란?
+    * Cost Function의 최소화를 목적으로 한 알고리즘
+    * ML 최소화 문제를 다루기 위해 주로 사용
+
+### 3.3.1 어떻게 작동하는가?
+    1 초기 추측으로 시작
+        * (0, 0) 또는 임의의 x, y 값에서 시작 
+        * W를 매우 조금 (Learning_rate) 변화시키며 Cost를 줄여감
+    2 Parameter를 바꿔가며 가능한 최대한 Cost를 줄여나간다.
+    3 지역 최소값에 도달할 때까지 반복
+        * 기울기 > 0 ∴ W --
+        * 기울기 < 0 ∴ W ++
+* 참고 : ["모두를 위한 TensorFlow (3) Gradient descent algorithm 기본, 2017.02.17, peter_yun"](https://medium.com/@peteryun/ml-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-tensorflow-3-gradient-descent-algorithm-%EA%B8%B0%EB%B3%B8-c0688208fc59 "https://medium.com/@peteryun/ml-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-tensorflow-3-gradient-descent-algorithm-%EA%B8%B0%EB%B3%B8-c0688208fc59")
+
+# 4. Multi Variable Linear Regression
+
+## 4.1 Multi Variable Linear Regression이란?
+    * 2개 이상의 독립 변수와 종속 변수간의 상관 관계를 모델링
+    

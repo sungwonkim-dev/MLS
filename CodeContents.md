@@ -56,7 +56,6 @@ print(session.run(root_node, feed_dict={l_node: [1,3], r_node: [2,4]}))
 ### 4. Linear Regression을 활용한 결과 예측
 
 ![LinearRegression](./res/image/exam/LinearRegression.PNG)
- 
 <pre><code>import tensorflow as tf
 
 x = [1, 4, 9]
@@ -93,3 +92,72 @@ for step in range(1001):
 
 print(session.run(hypothesis, feed_dict={x: [1, 4, 9]}))
 </code></pre>
+
+### 5. Minimizing Cost Gradient
+![Minimizing Cost Gradient](./res/image/exam/Minimizing Cost Gradient.PNG)
+<pre><code>import tensorflow as tf
+
+x = [1, 2, 3]
+y = [1, 2, 3]
+
+W = tf.Variable(tf.random_normal([1]), name='weight')
+X = tf.placeholder(tf.float32)
+Y = tf.placeholder(tf.float32)
+
+hypothesis = X * W
+
+cost = tf.reduce_mean(tf.square(hypothesis - Y))
+
+#아래 코드로 대체 가능
+#optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.005)
+#train = optimizer.minimize(cost)
+
+#Gradient Descent Algorithm
+learning_rate = 0.01
+gradient = tf.reduce_mean((W * X - Y) * X)
+descent = W - learning_rate * gradient
+update = W.assign(descent)
+
+session = tf.Session()
+session.run(tf.global_variables_initializer())
+
+for step in range(100):
+    session.run(update, feed_dict={X: x, Y : y})
+    print(step, session.run(cost, feed_dict={X: x, Y : y}), session.run(W))
+</code></pre>
+
+### 6. Multi Variable Linear Regression
+<pre><code>import tensorflow as tf
+
+x = [[73., 80., 75.],
+     [93., 88., 93.],
+     [89., 91., 90.],
+     [96., 98., 100.],
+     [73., 66., 70.]]
+y = [[152.],
+     [185.],
+     [180.],
+     [196.],
+     [142.]]
+
+X = tf.placeholder(tf.float32, shape=[None, 3])
+Y = tf.placeholder(tf.float32, shape=[None, 1])
+
+W = tf.Variable(tf.random_normal([3, 1]), name='weight')
+b = tf.Variable(tf.random_normal([1]), name='bias')
+
+hypothesis = tf.matmul(X, W) + b
+
+cost = tf.reduce_mean(tf.square(hypothesis - Y))
+
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-5)
+train = optimizer.minimize(cost)
+
+session = tf.Session()
+session.run(tf.global_variables_initializer())
+
+for step in range(2001):
+    cost_val, hypothesis_val, _ = session.run(
+        [cost, hypothesis, train], feed_dict={X: x, Y: y})
+    if step % 10 == 0:
+        print(step, cost_val, hypothesis_val)</code></pre>

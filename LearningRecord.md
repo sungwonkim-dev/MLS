@@ -1,6 +1,6 @@
 [MLS] Machine Learning Study
 ==========================
-# Machine Learning
+# 1. Machine Learning
 ## 1.1 Machine Learning이란?
     * 소프트웨어
     * 우리가 주로 사용하는 explicit program과 반대되는 개념
@@ -19,7 +19,7 @@
         * grouping
         * clustering
 
-# TensorFlow
+# 2. TensorFlow
 ## 2.1 TensorFlow란?
     * 오픈 소스 소프트웨어 라이브러리
     * Data Flow Graph를 이용한 Numerical computation

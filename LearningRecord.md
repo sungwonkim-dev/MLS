@@ -46,6 +46,34 @@
         * EX) t = [[[1], [2], [3]], [[4], [5], [6]], [[7], [8], [9]]]
     * n-Tensor 
         * EX) Your imagination will help you..
+
+## 2.S 유용한 TensorFlow 기능
+### 2.S.1 Queue Runner
+![QueueRunner](res/image/example/QueueRunner.PNG)
+
+#### 2.S.1.1 Queue Runner는 언제 사용하는가?
+    *  큰 데이터를 메모리에 참조하거나 메모리에 적재해야할 경우
+
+#### 2.S.1.2 Queue Runner 예제
+<pre><code># file1, file2, file3를 순서대로 참조
+# skip(n) : n번째 줄까지 제외.
+# repeat  : 파일의 끝에 도달하면 처음부터 반복.
+# batch(n): n개의 데이터를 묶어서 사용.
+iterator = tf.data.TextLineDataset("file1", "file2", "file3")
+           .skip(1)
+           .repeat()
+           .batch(10)
+           .make_initializable_iterator()
+
+dataset = iterator.get_next()
+lines = tf.decode_csv(dataset, record_defaults=[[0.], [0.], [0.], [0.]])
+
+train_x_batch = tf.stack(lines[0:-1], axis=1)
+train_y_batch = tf.stack(lines[-1:], axis=1)
+
+# session.run(iterator.initializer)
+</code></pre>
+* 참고 : ["https://www.tensorflow.org/beta/guide/data"](https://www.tensorflow.org/beta/guide/data"https://www.tensorflow.org/beta/guide/data")
         
 # 3. Linear Regression
 ## 3.1 Linear Regression이란?
@@ -57,7 +85,7 @@
 
 ## 3.2 Cost Funtion
     * 가설과 결과의 일치 여부, 또는 차이를 계산
-![CostFuntion](./res/image/exam/CostFuntion.PNG)
+![CostFuntion](res/image/example/CostFuntion.PNG)
 
 ## 3.3 Gradient descent algorithm이란?
     * Cost Function의 최소화를 목적으로 한 알고리즘
@@ -73,8 +101,35 @@
         * 기울기 < 0 ∴ W ++
 * 참고 : ["모두를 위한 TensorFlow (3) Gradient descent algorithm 기본, 2017.02.17, peter_yun"](https://medium.com/@peteryun/ml-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-tensorflow-3-gradient-descent-algorithm-%EA%B8%B0%EB%B3%B8-c0688208fc59 "https://medium.com/@peteryun/ml-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-tensorflow-3-gradient-descent-algorithm-%EA%B8%B0%EB%B3%B8-c0688208fc59")
 
+### 3.4 Linear Regression의 단점
+    * 기울기(W)가 변함에 따라 일부 데이터에 대한 오판이 일어날 가능성이 크다.
+ 
 # 4. Multi Variable Linear Regression
 
 ## 4.1 Multi Variable Linear Regression이란?
     * 2개 이상의 독립 변수와 종속 변수간의 상관 관계를 모델링
+
+# 5. Logistic Classification
+## 5.1 Logistic Classification이란?
+    * Binary Classification의 다른 이름
+    * 데이터를 1과 0의 두 가지 그룹으로 나누기 위해 사용하는 모델
+    * 활성화 함수를 이용하여  Linear Regression의 단점을 보완 
+        * EX) Sigmoid function
+![Sigmoid](res/image/example/Sigmoid.PNG)
+
+* Sigmoid function
+        
+## 5.2 Cost Function
+![LogisticClassificationCostFunction](res/image/example/LogisticClassificationCostFunction.PNG)
+![LogisticClassificationCostFunction2](res/image/example/LogisticClassificationCostFunction2.PNG)
     
+    1. y = 1
+        * H(x) = 1 -> cost(1) = 0
+        * H(x) = 0 -> cost(0) = ∞ ↑
+    2. y = 0
+        * H(x) = 1 -> cost(1) = 0
+        * H(x) = 0 -> cost(0) = ∞ ↑
+
+<pre><code>cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(hypothesis) + (1 - Y) * tf.log(1 - hypothesis)))</code></pre>    
+        
+        

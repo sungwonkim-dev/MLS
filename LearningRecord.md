@@ -74,7 +74,38 @@ train_y_batch = tf.stack(lines[-1:], axis=1)
 # session.run(iterator.initializer)
 </code></pre>
 * 참고 : ["https://www.tensorflow.org/beta/guide/data"](https://www.tensorflow.org/beta/guide/data"https://www.tensorflow.org/beta/guide/data")
+
+## 2.T 유용한 Tip
+### 2.T.1 Learning Rate
+    * Learning Rate ↑ -> Weight 변화율 ↑
+        ∴ Overshooting 발생 확률 ↑
+    * Learning Rate ↓ ->  Weight 변화율 ↓
+        ∴ Local Minimum에서 멈출 확률 ↑
+    
+    ∴ Cost의 변화 측정을 통해 적절한 값으로 조정 필요
+    
+### 2.T.2  Standardization
+![Standardization](res/image/example/Standardization.PNG)
+  
+    * X_std[:,0] = (X[:,0] - X[:,0].mean()) / X[:,0].std()
+    
+### 2.T.3 Overfitting
+    * Training Data Set에 매우 최적화된 상태
+    * Feature를 줄이거나 Regularization으로 해결 가능
+        * Weight의 상한선을 정함
+
+### 2.T.4 Performance Evaluation
+    * Original Set을 7:3 비율로 분할 (Training Set : Test Set) 
+    * Original Set을 6:1:3 비율로 분할 (Training Set : Validation Set : Test Set)
+        * Validation Set : 튜닝을 위한 데이터 셋
         
+### 2.T.5 Online Learning
+    * 다수의 데이터셋을 분할하여 학습
+
+### 2.T.W 자주 사용되는 단어
+    * epoch : 설정한 데이터 셋을 전부 사용하는 루프 1번
+    * batch size : 한 번에 사용할 데이터 셋의 크기
+
 # 3. Linear Regression
 ## 3.1 Linear Regression이란?
     * 선형 회귀
@@ -132,4 +163,26 @@ train_y_batch = tf.stack(lines[-1:], axis=1)
 
 <pre><code>cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(hypothesis) + (1 - Y) * tf.log(1 - hypothesis)))</code></pre>    
         
-        
+# 6. Multinomial Classification
+## 6.1 Multinomial Classification이란?
+    * Binary Classification과 다르게 여러 개의 클래스로 구분
+    * N개의 Binary Classification로도 구현 가능 
+## 6.2 SoftMax Function    
+    * 입력 값을 Sigmoid와 마찬가지로 0과 1 사이의 값으로 변환
+    * 변환된 결과에 대한 합계가 1이 되도록 변환
+## 6.3 Cross-Entropy Cost Function
+![LCross-EntropyCostFunction](res/image/example/Cross-EntropyCostFunction.PNG)
+* 출처 : ["Softmax classifier의 cost 함수 , 2016.07.27, pythonkim"](https://pythonkim.tistory.com/20 "https://pythonkim.tistory.com/20")
+    
+# 7. Deep Learning
+## 7.1 Deep Learning이란?
+    * 인간의 꿈, 인간을 대체할 기계를 만들자.
+    * 뇌의 구조는 복잡하지만 뇌를 구성하고 있는 뉴런은 매우 단순하게 일을 한다.
+    * 인간의 뇌를 모방하여 만든 초기 Perceptron은 AND/OR 연산은 가능했지만 XOR연산은 불가능했다.
+
+## 7.2 Convolutional Neural Network
+![CNN](res/image/example/CNN.PNG)
+
+    * 고양이가 그림을 볼 때의 시신경 활성화를 관찰
+    * 자동차를 볼 때 전체를 보고 자동차라고 판단하는 것이 아니라 일부를 보고 판단한다고 가설을 세움
+     

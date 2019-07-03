@@ -8,11 +8,10 @@
     * 빅데이터 분산처리 플랫폼 
     
 ## 2.2  Hadoop Eco System
-![HadoopEcoSystem](res/image/dc/HadoopEcoSystem.PNG)
+![HadoopEcoSystem](res/image/dc/HadoopEcoSystem.png)
 
 # 3. Spark
 ## 3.1 Spark란?
-    * Streaming 형태의 
-    빅데이터 분산처리 플랫폼
+    * Streaming 형태의 빅데이터 분산처리 플랫폼
 ## 3.1 Spark Eco System
-![SparkEcoSystem](res/image/dc/SparkEcoSystem.PNG)
+![SparkEcoSystem](res/image/dc/SparkEcoSystem.png)

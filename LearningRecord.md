@@ -13,7 +13,7 @@
         * regression
         * binary classification
         * multi-label classification
-
+DataCampusLearningRecord
 ### UnSupervised learning
     * 레이블화 되지 않는 데이터를 가지고 학습하는 것
         * grouping
@@ -90,9 +90,14 @@ train_y_batch = tf.stack(lines[-1:], axis=1)
     * X_std[:,0] = (X[:,0] - X[:,0].mean()) / X[:,0].std()
     
 ### 2.T.3 Overfitting
+![Overfitting](res/image/example/Overfitting.PNG)
+
     * Training Data Set에 매우 최적화된 상태
     * Feature를 줄이거나 Regularization으로 해결 가능
         * Weight의 상한선을 정함
+    * 학습 데이터로 학습   
+![L2Regularization](res/image/example/L2Regularization.PNG)
+* L2Regularization
 
 ### 2.T.4 Performance Evaluation
     * Original Set을 7:3 비율로 분할 (Training Set : Test Set) 
@@ -102,6 +107,21 @@ train_y_batch = tf.stack(lines[-1:], axis=1)
 ### 2.T.5 Online Learning
     * 다수의 데이터셋을 분할하여 학습
 
+### 2.T.6 Initialize weight in a smart way
+    * Bad way
+        * Set all initial weight to 0 
+            ∴ Gradient가 0이 되면서 전체가 0으로 변하게 됨
+    * Good way
+        1. Multi-layer 중 Input과 가까운 layer를 두 개씩 짝으로 생각한다.
+        2. Input과 Weight에 대하여 Forward, Backward 연산을 반복하며 Input이 손실되지 않는 Weight를 구한다.
+        3. 모든 layer에 적용한다.  
+        
+### 2.T.7 NN Dropout and Model Ensemble
+![Dropout](res/image/example/Dropout.PNG)
+
+![Dropout2](res/image/example/Dropout2.PNG)
+
+       
 ### 2.T.W 자주 사용되는 단어
     * epoch : 설정한 데이터 셋을 전부 사용하는 루프 1번
     * batch size : 한 번에 사용할 데이터 셋의 크기

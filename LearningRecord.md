@@ -186,10 +186,12 @@ train_y_batch = tf.stack(lines[-1:], axis=1)
 # 6. Multinomial Classification
 ## 6.1 Multinomial Classification이란?
     * Binary Classification과 다르게 여러 개의 클래스로 구분
-    * N개의 Binary Classification로도 구현 가능 
-## 6.2 SoftMax Function    
+    * N개의 Binary Classification로도 구현 가능
+ 
+## 6.2 SoftMax Function
     * 입력 값을 Sigmoid와 마찬가지로 0과 1 사이의 값으로 변환
     * 변환된 결과에 대한 합계가 1이 되도록 변환
+
 ## 6.3 Cross-Entropy Cost Function
 ![LCross-EntropyCostFunction](res/image/example/Cross-EntropyCostFunction.PNG)
 * 출처 : ["Softmax classifier의 cost 함수 , 2016.07.27, pythonkim"](https://pythonkim.tistory.com/20 "https://pythonkim.tistory.com/20")
@@ -205,4 +207,16 @@ train_y_batch = tf.stack(lines[-1:], axis=1)
 
     * 고양이가 그림을 볼 때의 시신경 활성화를 관찰
     * 자동차를 볼 때 전체를 보고 자동차라고 판단하는 것이 아니라 일부를 보고 판단한다고 가설을 세움
-     
+
+### 7.2.1 Pooling layer 
+![CNN_POOLING_LAYER](res/image/example/CNN_POOLING_LAYER.PNG)
+   
+    * Sampling의 다른 이름
+    * 크기가 작아진다는 것이 핵심
+    * 단 채널의 두께는 변하지 않음.
+    * CNN예써는 쭈로 Max Pooling 기법을 사용
+    
+![CNN_MAX_POOLING_LAYER](res/image/example/CNN_MAX_POOLING_LAYER.PNG)    
+    
+    
+            
